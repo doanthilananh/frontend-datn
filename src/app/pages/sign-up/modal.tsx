@@ -1,3 +1,4 @@
+import BasicTable from '@app/components/table';
 import {
   Button,
   Dialog,
@@ -12,7 +13,6 @@ const CustomModal = ({
   isOpen, 
   handleClose,
   title,
-  children
 }) => {
   return(
       <>
@@ -20,11 +20,18 @@ const CustomModal = ({
           <DialogTitle>{title}</DialogTitle>
           <DialogContent>
               <DialogContentText></DialogContentText>
-              {children}
+              <BasicTable/>
+              <p style={{textAlign:'center', marginTop:30}}>
+                <strong>Bạn vẫn còn có những mắc thắc và băn khoăn cần được giải đáp?</strong>
+                <br/>
+                Hãy liên hệ ngay với bộ phận Bán hàng online của chúng tôi
+                <br/>
+                <a href='https://zalo.me/0366754936' target="_blank">0366754936</a>
+              </p>
           </DialogContent>
           <DialogActions>
               <Button onClick={handleClose} color = 'primary'>
-                  Close
+                  Đóng
               </Button>
           </DialogActions>
           </Dialog>

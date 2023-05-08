@@ -10,6 +10,7 @@ import {
   Paper,
 } from "@material-ui/core";
 import { Card } from 'react-bootstrap'
+import {RadioButton, RadioGroup, ReversedRadioButton, View, RadioButtonGroup} from "react-radio-buttons";
 
 import { Message, ShoppingCart as ShoppingCartIcon } from "@material-ui/icons";
 import MuiImageSlider from "mui-image-slider";
@@ -43,12 +44,19 @@ import { Row, Col, Image, ListGroup } from 'react-bootstrap'
 import ProductRateService from "@app/services/http/product.rate.serive";
 import { ProductRate, ProductRateDto } from "@app/models/product-rate.model";
 import ProductRateComponent from "@app/components/product-rate";
+import ProductImage from "@app/components/product-image/product-image";
+import Size from "@app/components/size";
+import CustomModal from "../sign-up/modal";
 
 
 
 function ProductDetail() {
   const classes = useStyles();
+  const [selectedOption, setSelectedOption] = useState('option1');
 
+  function handleChange(event) {
+    setSelectedOption(event.target.value);
+  }
   const { id: userId, role: userRole } = useSelector(selectAuth);
 
   const dispatch = useDispatch();
@@ -111,7 +119,12 @@ function ProductDetail() {
     setQuantity(+ev.target.value);
   };
 
-  
+  const [size, setSize] = useState("");
+
+  const callbackSize = (childSize)=>{
+    setSize(childSize);
+  }
+
   const onAddToCartClick = () => {
     if (!userId) {
       navigate(
@@ -143,6 +156,7 @@ function ProductDetail() {
     const cartDto: CreateCartDto = {
       productId: product.id,
       quantity,
+      size : size,
     };
     subscribeOnce(CartService.addToCart(cartDto), () => {
       dispatch(fetchCart({ destroy$ }));
@@ -161,8 +175,18 @@ function ProductDetail() {
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [product]);
-  
-  
+  const [q, setQ] = useState(0);
+  const callbackQuantity = (childData) => {
+    setQ(childData);
+  }
+  const [isOpen, setIsOpen] = useState(false);
+  const handleDialogClose = ()=>{
+    setIsOpen(false);
+  }
+  const handleDialogOpen = ()=>{
+    setIsOpen(true);
+  }
+
   return (
     <div ref={pageRef}>
       <Helmet>
@@ -191,15 +215,18 @@ function ProductDetail() {
         maxWidth="992px"
         style={{ margin: "0 auto", display: "flex" }}
       >
-        <Grid item xs={4} sm={4}>
+        <Grid item xs={8} sm={8} style={{marginRight:50}}>
           <Box>
             {!!product.productImages?.length && (
-              <MuiImageSlider
-                images={product.productImages.map((item) =>
-                  buildImageSrc(item.imageUrl)
-                )}
-                classes={{ root: classes.wrapper }}
-              />
+              // <MuiImageSlider
+              //   images={product.productImages.map((item) =>
+              //     buildImageSrc(item.imageUrl)
+              //   )}
+              //   classes={{ root: classes.wrapper }}
+              // />
+        
+                    <ProductImage detail={product.productImages} />
+
             )}
             {!product.productImages?.length && (
               <img
@@ -216,56 +243,33 @@ function ProductDetail() {
               {product.title}
             </Typography>
             <Divider />
-            <Box style={{ display: "flex" }}>
+            <Box style={{ display: "flex", flexDirection:'column' }}>
               <Grid item xs={7} sm={7}>
-                <ul>
-                  {/* <li>
-                    <Rating value={5} text={`${total} reviews`}/>
-                  </li> */}
-                  <li>
-                    Tác giả:{" "}
-                    <span style={{ fontWeight: "bolder" }}>
-                      {product.author}
-                    </span>
-                  </li>
-                  <li>
-                    Thể loại:{" "}
-                    <Link
-                      to={`/products?category=${product.category?.slug}`}
-                      style={{ textDecoration: "none" }}
-                    >
-                      <span style={{ fontWeight: "bolder" }}>
-                        {product.category?.name}
-                      </span>
-                    </Link>
-                  </li>
-                  <li>
-                    Số trang:{" "}
-                    <span style={{ fontWeight: "bolder" }}>
-                      {product.numberOfPage}
-                    </span>
-                  </li>
-                  <li>
-                    Còn:{" "}
-                    <span style={{ fontWeight: "bolder" }}>
-                      {product.currentNumber}
-                    </span>
-                  </li>
-                  <li>
-                    Giá:{" "}
-                    <span style={{ fontWeight: "bolder" }}>
-                      {product?.price?.toLocaleString("vn") + "đ"}
-                    </span>
-                  </li>
-                </ul>
+                <div style={{display:'flex', flexDirection:'column', marginBottom:30}}>
+                <span>Thương hiệu: Hàng cao cấp</span>
+                <span>Mã sản phẩm: {product.id}</span>
+                </div>
+                <Typography variant="h4" style={{fontWeight:'bold'}} color="textPrimary">
+              {product.price && `${product.price.toLocaleString("vn")} đ`}
+            </Typography>
               </Grid>
               <Grid
                 item
-                xs={5}
-                sm={5}
-                style={{ textAlign: "right", marginTop: "1em" }}
+                xs={12}
+                sm={12}
+                style={{ textAlign: "left", marginTop: "1em" }}
               >
-                <Box style={{ marginTop: "1em" }}>
+            <Box style={{marginBottom:30}}>
+            <Typography variant="h6" style={{fontSize:15}} color="textPrimary">
+              Kích thước
+            </Typography>
+               <Size callback={callbackSize} id={product.id} setQuantity={callbackQuantity}/>
+            </Box>
+            <span style={{cursor:'pointer', textDecoration:'underline'}} onClick={handleDialogOpen}>
+              HƯỚNG DẪN CHỌN SIZE
+            </span>
+                <Box style={{ marginTop: "2em"}}>
+                  <div style={{display:'flex', alignItems:'center'}}>
                   <TextField
                     onChange={onQuantityChange}
                     size="small"
@@ -280,9 +284,11 @@ function ProductDetail() {
                     style={{ width: "11em" }}
                     variant="outlined"
                   />
+                  <span style={{marginLeft:10}}>{size.length !== 0 ? `${q} sản phẩm có sẵn` : ""}</span>
+                  </div>
                   <Box>
                     <Button
-                    style={{backgroundColor:'#000000'}}
+                    style={{backgroundColor:'#000000', marginTop:30, marginBottom:30}}
                       variant="contained"
                       color="primary"
                       startIcon={<ShoppingCartIcon />}
@@ -296,11 +302,12 @@ function ProductDetail() {
               </Grid>
             </Box>
             <Divider />
-            <Box>
-              <Typography variant="h6" color="textPrimary">
-                Giới thiệu tác phẩm
-              </Typography>
-              {product.longDescription}
+            <Box style={{textAlign:'justify'}}>
+     
+            <Typography variant="h6"  color="textPrimary">
+              Giới thiệu sản phẩm
+            </Typography>
+            <span>{product.longDescription}</span>
             </Box>
           </Box>
         </Grid>
@@ -323,7 +330,7 @@ function ProductDetail() {
             padding: "0.2em",
           }}
         >
-          Sách cùng thể loại
+          Sản phẩm tương tự
         </Typography>
         <Box marginTop={2}>
           <div>
@@ -389,6 +396,12 @@ function ProductDetail() {
           </Box>
         </Box>
       )}
+           <CustomModal isOpen={isOpen} handleClose={handleDialogClose} title="HƯỚNG DẪN CHỌN SIZE">
+        <div>
+            <p>Vui lòng kiểm tra email để xác thực tài khoản
+            </p>
+          </div>
+        </CustomModal>
       <Footer />
     </div>
   );

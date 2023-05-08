@@ -1,0 +1,32 @@
+input[type="radio"] {
+    opacity: 0;
+    position: absolute;
+    left: -9999px;
+  }
+  
+
+  
+ .label > label {
+    border: 1px solid #c9bbbb !important;
+    padding: 8px 15px 8px 15px;
+    width: 70px;
+    cursor: pointer;
+  }
+  
+ 
+.active{
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;}
+
+.label > .swatch{
+    background-image: url("//theme.hstatic.net/200000182297/1000887316/14/select-pro1.png?v=567");
+}
+.sd{
+    border: 1px solid #000 !important;
+}
+
+.img-check{
+    display: none;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}

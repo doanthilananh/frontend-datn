@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Grid, Button, Box } from "@material-ui/core";
+import { Grid, Button, Box, Container } from "@material-ui/core";
 import {
   Twitter as TwitterIcon,
   Facebook as FacebookIcon,
@@ -8,90 +8,88 @@ import {
 import { useSelector } from "react-redux";
 import { GlobalState } from "@app/store";
 import { useStyles } from "./make-style";
+import Contact from "../contact";
+
+import { MDBFooter, MDBContainer, MDBRow, MDBCol, MDBIcon } from 'mdb-react-ui-kit';
 
 function Footer() {
-  const classes = useStyles();
-
-  const { username } = useSelector(selectAuth);
 
   return (
-    <Box marginTop={10} className="bs-bg-primary" >
-      <Box paddingX={4} maxWidth="100%" style={{ margin: "0 auto",
-    backgroundColor:'#000000' }}>
-        <div className={classes.footerContainer}>
-          <Grid style={{ width: "50%" }}>
-            <Box>
-              <ul className={classes.footerMenu}>
-                {/* <li>
-                  <Link to="" className={classes.footerMenuItem}>
-                    GIỚI THIỆU
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/products" className={classes.footerMenuItem}>
-                    SÁCH
-                  </Link>
-                </li>
-                <li>
-                  <Link to="" className={classes.footerMenuItem}>
-                    TIN TỨC
-                  </Link>
-                </li>
-                <li>
-                  <Link to="" className={classes.footerMenuItem}>
-                    KHUYẾN MÃI
-                  </Link>
-                </li>
-                <li>
-                  <Link to="" className={classes.footerMenuItem}>
-                    LIÊN HỆ
-                  </Link>
-                </li> */}
-              </ul>
-              <Box style={{ marginLeft: "2em" }}>
-                <TwitterIcon
-                  fontSize="large"
-                  style={{ color: "white", margin: "0 0.2em" }}
-                />
-                <FacebookIcon
-                  fontSize="large"
-                  style={{ color: "white", margin: "0 0.2em" }}
-                />
-                <InstagramIcon
-                  fontSize="large"
-                  style={{ color: "white", margin: "0 0.2em" }}
-                />
-              </Box>
-            </Box>
-          </Grid>
-          <Grid style={{ width: "50%" }}>
-            <Box style={{ textAlign: "center" }}>
-              <h1>HIBOOK</h1>
-              {!username && (
-                <Box style={{ marginTop: "5em" }}>
-                  <Button style={{ marginRight: "1em" }} variant="contained">
-                    <Link
-                      to="/login"
-                      style={{ textDecoration: "none", color: "black" }}
-                    >
-                      Đăng nhập
-                    </Link>
-                  </Button>
-                  <Button style={{ marginRight: "1em" }} variant="contained">
-                    <Link
-                      to="/signup"
-                      style={{ textDecoration: "none", color: "black" }}
-                    >
-                      Đăng ký
-                    </Link>
-                  </Button>
-                </Box>
-              )}
-            </Box>
-          </Grid>
-        </div>
-      </Box>
-    </Box>
+    <Container style={{backgroundColor:'#000000', marginTop:100, maxWidth:'100%', color:'white'}}>
+    <section className=''>
+      <MDBContainer style={{maxWidth:'100%'}}>
+        <MDBRow style={{display:'flex', justifyContent:'space-between'}}>
+          <MDBCol md="3" lg="4" xl="3" className='mx-auto mb-4'>
+            <h3>
+              <MDBIcon icon="gem" className="me-3" />
+              Vị trí cửa hàng
+              <Contact/>
+            </h3>
+          </MDBCol>
+
+          <MDBCol md="2" lg="2" xl="2" className='mx-auto mb-4'>
+            <h3 className='text-uppercase fw-bold mb-4'>Thông tin về chúng tôi</h3>
+            <p>
+            Chính sách giao nhận - Vận chuyển
+            </p>
+            <p>
+              Hướng dẫn thanh toán
+
+            </p>
+            <p>
+              Tra cứu đơn hàng
+
+            </p>
+            <p>
+              Quy định bảo hành và sửa chữa
+            </p>
+          </MDBCol>
+
+          <MDBCol md="3" lg="2" xl="2" className='mx-auto mb-4'>
+            <h3 className='text-uppercase fw-bold mb-4'>Sản phẩm</h3>
+            <p>
+              <a href='#!' style={{textDecoration:'none', color:'white'}}>
+                Giày
+              </a>
+            </p>
+            <p>
+              <a href='#!' style={{textDecoration:'none', color:'white'}}>
+                Áo khoác
+              </a>
+            </p>
+            <p>
+              <a href='#!' style={{textDecoration:'none', color:'white'}}>
+                Set bộ
+              </a>
+            </p>
+            <p>
+              <a href='#!' style={{textDecoration:'none', color:'white'}}>
+                Thắt lưng
+              </a>
+            </p>
+          </MDBCol>
+
+          <MDBCol md="4" lg="3" xl="3" className='mx-auto mb-md-0 mb-4'>
+            <h3 className='text-uppercase fw-bold mb-4'>Liên hệ</h3>
+            <p>
+              <MDBIcon icon="home" className="me-2" />
+              {` `}109 Phạm Ngũ Lão, Hải Dương</p>
+            <p>
+              <MDBIcon icon="envelope" className="me-3" />
+              {` `}shophaiduong@gmail.com
+            </p>
+            <p>
+              <MDBIcon icon="phone" className="me-3" /> 0366754936
+            </p>
+            <p>
+              <MDBIcon icon="print" className="me-3" /> 0969441658
+            </p>
+          </MDBCol>
+        </MDBRow>
+      </MDBContainer>
+    </section>
+
+    </Container>
   );
 }
 

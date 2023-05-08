@@ -262,7 +262,7 @@ function SaleOrderManagement() {
                   <Controls.Select
                     style={{ width: "12em" }}
                     name="deliveryId"
-                    label="Lọc theo tình trạng"
+                    label="Tình trạng đơn hàng"
                     value={deliverFilter}
                     options={[
                       { id: 0, title: "Tất cả" },

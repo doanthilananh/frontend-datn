@@ -95,12 +95,12 @@ function HomePage() {
       <Box
         marginTop={2}
         paddingX={5.5}
-        maxWidth="930px"
+        maxWidth="1300px"
         style={{ margin: "0 auto" }}
       >
         <Box marginTop={5}>
           <Typography variant="h6" gutterBottom align="left">
-            SÁCH MỚI
+            SẢN PHẨM MỚI
           </Typography>
 
           <div className={classes.root}>
@@ -123,7 +123,7 @@ function HomePage() {
 
         <Box marginTop={5} marginBottom={5}>
           <Typography variant="h6" gutterBottom align="left">
-            SÁCH BÁN CHẠY
+            SẢN PHẨM BÁN CHẠY
           </Typography>
 
           <div className={classes.root}>

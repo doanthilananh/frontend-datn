@@ -283,12 +283,13 @@ function AppBar() {
           {/* </SwipeableDrawer> */}
           <Link to="/" style={{ color: "white", textDecoration: "none"}}>
             <Typography className={classes.title} variant="h6" noWrap>
-              HIBOOK
+              CLOTHES STORE
             </Typography>
           
           </Link>
+  
           <div className="menu-wrapper">
-          <ul>
+          <ul style={{display:'flex'}}>
             <li>
               <Link to="" style={{backgroundColor:'#000000'}}>
                 {/* <i className="fa fa-bars"></i>{" "} */}
@@ -323,8 +324,16 @@ function AppBar() {
                   ))}
               </ul>
             </li>
+            <Link to="/contact" style={{ color: "white", textDecoration: "none", marginRight:30}}>
+                {/* <i className="fa fa-bars"></i>{" "} */}
+                <Typography className={classes.title} variant="h6" noWrap>
+              LIÊN HỆ SHOP
+            </Typography>
+                        </Link>
           </ul>
+          
         </div>
+       
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />

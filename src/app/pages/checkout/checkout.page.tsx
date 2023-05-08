@@ -228,6 +228,7 @@ function Checkout() {
             >
               Đặt hàng thành công
             </Typography>
+            <p>Cảm ơn quý khách đã tin tưởng mua hàng bên chúng tôi</p>
           </Box>
           <div style={{ textAlign: "center" }}>
             <img src={imagePaymentSuccessful} alt="" width="30%" />

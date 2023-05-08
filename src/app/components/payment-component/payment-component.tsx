@@ -31,6 +31,7 @@ import { useStyles } from "./make-style";
 import ConfirmDialog from "@app/components/confirm-dialog";
 import { PaginationOption } from "@core/services/http/http.service";
 import {
+  DEFAULT_DATETIME_FORMAT,
   DEFAULT_PAGINATION_OPTION,
   TYPE_ALERT,
 } from "@app/shared/constants/common";
@@ -40,6 +41,7 @@ import PopupDialog from "@app/components/popup-dialog";
 import UserForm from "@app/components/user-form";
 import { PaymentUser } from "@app/models/payment.user.model";
 import PaymentUserService from "@app/services/http/payment.user.service";
+import dayjs from "dayjs";
 
 
 type PropTypes = {
@@ -152,7 +154,7 @@ type PropTypes = {
                     <TableCell>{Number(item.vnpAmount).toLocaleString("vn")}</TableCell>
                     <TableCell>{item.vnpBankCode}</TableCell>
                     <TableCell>{item.vnpOrderInfo}</TableCell>
-                    <TableCell>{item.vnpPayDate}</TableCell>
+                    <TableCell>{dayjs(item.vnpPayDate).format(DEFAULT_DATETIME_FORMAT)}</TableCell>
                     <TableCell>{item.vnpTxnref}</TableCell>
                     <TableCell style={{color:item.paymentStatus==1 ? 'green' : 'red'}}>{item.paymentStatus == 1 ? "Thành công" : "Chờ thanh toán"}</TableCell>
                   </TableRow>

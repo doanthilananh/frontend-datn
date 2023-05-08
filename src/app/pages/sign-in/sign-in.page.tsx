@@ -79,9 +79,10 @@ export default function SignIn() {
         if (backUrl && backUrl.startsWith("/")) {
           navigate(backUrl, { replace: true });
         } else {
-          navigate("/profile", { replace: true });
+          // navigate("/profile", { replace: true });
 
-          navigate("/", { replace: true });
+          // navigate("/", { replace: true });
+          window.location.assign("http://localhost:3000");
         }
       }
     );
@@ -218,6 +219,7 @@ export default function SignIn() {
               fullWidth
               variant="contained"
               color="primary"
+              style={{backgroundColor:'#000000'}}
               className={clsx("bs-btn bs-btn-primary", classes.submit)}
               onClick={handleLogin}
             >
@@ -227,7 +229,8 @@ export default function SignIn() {
               <Grid item xs>
                 <Link
                   to="#"
-                  className="bs-text-primary"
+                  className=""
+                  style={{color:'#000000'}}
                   onClick={(event) => {
                     event.preventDefault();
                     setIsOpenPopup(true);
@@ -238,7 +241,8 @@ export default function SignIn() {
               </Grid>
               <Grid item>
               Bạn chưa có tài khoản?
-                <Link to="/signup" className="bs-text-primary">
+                <Link to="/signup" className=""                  style={{color:'#000000'}}
+>
                    Đăng ký
                 </Link>
               </Grid>

@@ -1,5 +1,5 @@
 import { map } from "rxjs/operators";
-import HttpService, { PaginationOption, ResponseResult } from "@core/services/http/http.service";
+import HttpService, { CoreResponse, PaginationOption, ResponseResult } from "@core/services/http/http.service";
 import { ProductRate, ProductRateDto } from "@app/models/product-rate.model";
 
 
@@ -26,6 +26,11 @@ class _ProductRateService {
   public getList(productId : number) {
     return HttpService.get(`/product-rates/?productId=${productId}`, {
     }).pipe(map<any, any>((response) => response.result));
+  }
+
+  public getAllList() {
+    return HttpService.get(`/product-rates/rates`, {
+    }).pipe(map<any, CoreResponse>((response) => response.result.data));
   }
 }
 

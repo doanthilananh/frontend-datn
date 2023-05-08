@@ -27,6 +27,8 @@ import { storeUser } from "@app/store/auth/auth.action";
 import HttpService from "@core/services/http/http.service";
 import CustomModal from "./modal";
 import { useSelector } from 'react-redux';
+import { useSnackbar } from "notistack";
+import { TYPE_ALERT } from "@app/shared/constants/common";
 
 export default function SignUp() {
   const classes = useStyles();
@@ -58,6 +60,7 @@ export default function SignUp() {
 
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, []);
+  const { enqueueSnackbar } = useSnackbar();
 
   const onSubmit = () => {
     subscribeOnce(AuthService.signUp(userDto), (response) => {
@@ -65,10 +68,14 @@ export default function SignUp() {
       StorageService.set("access_token", response.result?.data.jwt);
       StorageService.set("role", response.result?.data.user.role);
       handleDialogOpen();
+      enqueueSnackbar(`Đăng ký tài khoản thành công`, {
+        variant: TYPE_ALERT.SUCCESS,
+      });
       setTimeout(()=>{
         navigate("/login", { replace: true });
-      },3000
-      )
+
+      }, 2000)
+    
     });
   };
 
@@ -107,6 +114,7 @@ export default function SignUp() {
           <Typography component="h1" variant="h5">
             Đăng ký
           </Typography>
+          <p>Hãy đăng ký ngay để tích lũy điểm thành viên và nhận được những ưu đãi tốt hơn!</p>
           <div className={classes.form}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
@@ -218,6 +226,7 @@ export default function SignUp() {
               fullWidth
               variant="contained"
               color="primary"
+              style={{background:'#000000'}}
               className={classes.submit}
               onClick={()=>{
                 onSubmit();
@@ -227,20 +236,20 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link to="/login" className="bs-text-primary">
+                <Link to="/login" className="" style={{color:'black'}}>
                   Đăng nhập
                 </Link>
               </Grid>
             </Grid>
           </div>
         </div>
-        <CustomModal isOpen={isOpen} handleClose={handleDialogClose} title="Bạn cần xác thực tài khoản !!">
+        {/* <CustomModal isOpen={isOpen} handleClose={handleDialogClose} title="Bạn cần xác thực tài khoản !!">
         <div>
           <p>Chúng tôi đã gửi một email tới <b>{userDto.email}</b></p>
             <p>Vui lòng kiểm tra email để xác thực tài khoản
             </p>
           </div>
-        </CustomModal>
+        </CustomModal> */}
       </Container>
     </>
   );

@@ -75,7 +75,7 @@ function CartItem(props: PropTypes) {
               to={`/products/${item.product.slug}`}
               style={{ textDecoration: "none", color: "black" }}
             >
-              {item.product.title}
+              {`${item.product.title} (Size: ${item.size})`}
             </Link>
           </Typography>
         </Grid>

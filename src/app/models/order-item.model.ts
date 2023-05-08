@@ -5,6 +5,7 @@ export class OrderItem extends Model {
   id: number;
   product: Product;
   quantity: number;
+  size: string;
   createdAt: Date;
   updatedAt: Date;
 

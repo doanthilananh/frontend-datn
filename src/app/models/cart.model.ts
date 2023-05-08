@@ -22,4 +22,5 @@ export class Cart extends Model {
 export interface CreateCartDto {
   productId: number;
   quantity: number;
+  size : string;
 }

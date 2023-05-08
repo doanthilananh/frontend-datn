@@ -37,7 +37,6 @@ function ProductItem(props: PropTypes) {
       setTotal(data.pagination.total);
     })
   }, [item])
-  console.log(rate/total);
   
   
 

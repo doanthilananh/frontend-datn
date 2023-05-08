@@ -9,6 +9,7 @@ import Profile from "./pages/profile";
 import Dashboard from "./pages/admin/dashboard";
 import CartInfo from "./pages/cart-info";
 import Checkout from "./pages/checkout";
+import Contact from "./components/contact";
 
 export const routes: RouteGuardShape[] = [
   {
@@ -19,6 +20,14 @@ export const routes: RouteGuardShape[] = [
       redirect: "/login",
     },
   },
+  // {
+  //   path: "/contact",
+  //   component: Contact,
+  //   config: {
+  //     roles: [Role.GUEST, Role.ADMIN, Role.MEMBER],
+  //     redirect: "/",
+  //   },
+  // },
   {
     path: "/categories",
     component: CategoryList,

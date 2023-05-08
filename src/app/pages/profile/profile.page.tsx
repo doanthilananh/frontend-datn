@@ -78,7 +78,7 @@ function Profile() {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId]);
-  const [isOpenPopup, setIsOpenPopup] = useState(false);
+  const [isOpenPopup,  setIsOpenPopup] = useState(false);
 
   useEffect(() => {
     if (location.pathname === "/profile") {
@@ -337,10 +337,10 @@ function Profile() {
                         } }>Nạp tiền</Button>
                       </DialogActions>
                     </Dialog>
-                    <Box style={{marginTop : -75}}>
+                    {/* <Box style={{marginTop : -75}}> */}
                     <PaymentComponent onUpdateSuccess={onUpdateSuccess}></PaymentComponent>
 
-                    </Box>
+                    {/* </Box> */}
                       </Box>
                     </Paper>
                   </Box>
