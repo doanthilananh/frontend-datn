@@ -124,7 +124,7 @@ const TopSelling: FC = () => {
 
           </Box>
         </FlexBox>
-        <h1>{pagination.page===1 ? (index+1) : (index+1+pagination.perPage)}</h1>
+        <h1>{(pagination.perPage*pagination.page)-(pagination.perPage-(index+1))}</h1>
         </NavLink> 
        ))}
       <Pagination
@@ -137,26 +137,4 @@ const TopSelling: FC = () => {
     </Card>
   );
 };
-
-const productList = [
-  {
-    title: "Nike airmax 170",
-    image: "/static/products/black-keds.png",
-    price: 567,
-    rating: 5,
-  },
-  {
-    title: "Nike airmax 170",
-    image: "/static/products/green-keds.png",
-    price: 200,
-    rating: 5,
-  },
-  {
-    title: "Nike airmax 170",
-    image: "/static/products/yellow-keds.png",
-    price: 400,
-    rating: 5,
-  },
-];
-
 export default TopSelling;

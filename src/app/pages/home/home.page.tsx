@@ -85,11 +85,6 @@ function HomePage() {
       </Helmet>
       
       <AppBar />
-      <Container style={{marginTop:45, overflow:'hidden'}}>
-      <div style={containerStyles}>
-        <ImageSlider slides={slides} parentWidth={1700} />
-      </div> 
-      </Container>
       <MainSlider />
         
       <Box
@@ -99,7 +94,7 @@ function HomePage() {
         style={{ margin: "0 auto" }}
       >
         <Box marginTop={5}>
-          <Typography variant="h6" gutterBottom align="left">
+          <Typography variant="h4" gutterBottom align="center" style={{marginBottom:40, fontWeight:"bold"}}>
             SẢN PHẨM MỚI
           </Typography>
 
@@ -116,13 +111,13 @@ function HomePage() {
 
           <Box className={classes.showMoreBox}>
             <Link to="/products" className={classes.showMoreLink}>
-              <Button variant="contained">Xem thêm</Button>
+              <Button variant="contained" style={{color:'white', backgroundColor:'#000000', marginTop:20}}>Xem thêm</Button>
             </Link>
           </Box>
         </Box>
 
         <Box marginTop={5} marginBottom={5}>
-          <Typography variant="h6" gutterBottom align="left">
+        <Typography variant="h4" gutterBottom align="center" style={{marginBottom:40, fontWeight:"bold"}}>
             SẢN PHẨM BÁN CHẠY
           </Typography>
 
@@ -142,7 +137,7 @@ function HomePage() {
               to="/products?mode=top-selling"
               className={classes.showMoreLink}
             >
-              <Button variant="contained">Xem thêm</Button>
+              <Button variant="contained" style={{color:'white', backgroundColor:'#000000', marginTop:20}}>Xem thêm</Button>
             </Link>
           </Box>
         </Box>
@@ -179,7 +174,7 @@ function HomePage() {
               to="/products?category=combo"
               className={classes.showMoreLink}
             >
-              <Button variant="contained">Xem thêm</Button>
+              <Button variant="contained" style={{color:'white', backgroundColor:'#000000', marginTop:20}}>Xem thêm</Button>
             </Link>
           </Box>
         </Box>
@@ -216,7 +211,7 @@ function HomePage() {
               to="/products?category=manga-comic"
               className={classes.showMoreLink}
             >
-              <Button variant="contained">Xem thêm</Button>
+              <Button variant="contained" style={{color:'white', backgroundColor:'#000000', marginTop:20}}>Xem thêm</Button>
             </Link>
           </Box>
         </Box>
@@ -257,7 +252,7 @@ function HomePage() {
               to="/products?category=wings-books"
               className={classes.showMoreLink}
             >
-              <Button variant="contained">Xem thêm</Button>
+              <Button variant="contained" style={{color:'white', backgroundColor:'#000000', marginTop:20}}>Xem thêm</Button>
             </Link>
           </Box>
         </Box>

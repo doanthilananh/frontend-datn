@@ -16,6 +16,7 @@ import {
   ViewCarousel as ViewCarouselIcon,
 } from "@material-ui/icons";
 import { MenuItem } from "../types/menu-item.type";
+import { Warehouse } from "@mui/icons-material";
 
 export enum FETCH_TYPE {
   ADMIN = 1,
@@ -144,5 +145,11 @@ export const mainMenuItems: MenuItem[] = [
     tooltip: "Quản lý banner",
     mainContent: "Quản lý banner",
     icon: ViewCarouselIcon,
+  },
+  {
+    linkTo:"/admin/size-product-management",
+    tooltip: "Quản lý kho hàng",
+    mainContent:"Quản lý kho hàng",
+    icon: Warehouse
   }
 ];

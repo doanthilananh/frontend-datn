@@ -7,6 +7,7 @@ import ProductImageManagement from "./product-image-management";
 import ProductManagement from "./product-management";
 import RecentOrderManagement from "./recent-order-management";
 import SaleOrderManagement from "./sale-order-management";
+import SizeProductManagement from "./size-product-management";
 import UserManagement from "./user-management";
 
 export const routes: RouteGuardShape[] = [
@@ -37,6 +38,14 @@ export const routes: RouteGuardShape[] = [
   {
     path: "/product-management",
     component: ProductManagement,
+    config: {
+      roles: [Role.ADMIN],
+      redirect: "/",
+    },
+  },
+  {
+    path: "/size-product-management",
+    component: SizeProductManagement,
     config: {
       roles: [Role.ADMIN],
       redirect: "/",

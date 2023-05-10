@@ -1,6 +1,7 @@
 import { Model } from "./model";
 import { Category } from "./category.model";
 import { ProductImage } from "./product-image.model";
+import { SizeProduct } from "./size.product.model";
 
 export class Product extends Model {
   id: number;
@@ -13,6 +14,7 @@ export class Product extends Model {
   author: string;
   currentNumber: number;
   numberOfPage: number;
+  sizeProducts: SizeProduct[];
   slug: string;
   quantityPurchased: number;
   createdAt: Date;
