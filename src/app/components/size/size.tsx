@@ -26,7 +26,7 @@ const SizeSelector = (props) => {
   return (
     <div >
       <div style={{display:'flex', justifyContent:'space-between'}} className="label">
-        <label className={selectedSize === "XS" ? 'active sd' : ''}>
+        <label className={selectedSize === "XS" ? 'activesss sd' : ''}>
           <input type="radio" name="size" value="XS" checked={selectedSize === 'XS'} onChange={HandleSizeChange} />
           XS
           {selectedSize === "XS" && (
@@ -35,7 +35,7 @@ const SizeSelector = (props) => {
                 style={{position:'absolute', width:30, marginLeft:7}}
               />
             )}        </label>
-        <label className={selectedSize === "S" ? 'active' : ''}>
+        <label className={selectedSize === "S" ? 'activesss' : ''}>
           <input type="radio" name="size" value="S" checked={selectedSize === 'S'} onChange={HandleSizeChange} />
           S
           {selectedSize === "S" && (
@@ -45,7 +45,7 @@ const SizeSelector = (props) => {
               />
             )}  
         </label>
-        <label className={selectedSize === "M" ? 'active' : ''}>
+        <label className={selectedSize === "M" ? 'activesss' : ''}>
           <input type="radio" name="size" value="M" checked={selectedSize === 'M'} onChange={HandleSizeChange} />
           M
           {selectedSize === "M" && (
@@ -55,7 +55,7 @@ const SizeSelector = (props) => {
               />
             )}  
         </label>
-        <label className={selectedSize === "L" ? 'active' : ''}>
+        <label className={selectedSize === "L" ? 'activesss' : ''}>
           <input type="radio" name="size" value="L" checked={selectedSize === 'L'} onChange={HandleSizeChange} />
           L
           {selectedSize === "L" && (

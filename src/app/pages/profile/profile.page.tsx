@@ -100,6 +100,11 @@ function Profile() {
         navigation: [{ title: "Trang chủ", linkTo: "/" }],
         textPrimary: "Nạp tiền",
       });
+      if (location.search) {
+        axios.get(`http://localhost:8081/api/users/check${location.search}`, config);
+        navigate("/profile/recharge", {replace : true});
+
+      }
     } else if (location.pathname.includes("/profile/order-detail/")) {
       setTitle("Chi tiết đơn hàng");
 
@@ -148,7 +153,7 @@ function Profile() {
       if (userId && token) {
         try {
           const response =  await axios.post(`http://localhost:8080/api/users/payment`, {"vnpAmount" : amount}, config);
-          setUrl(response.data);
+          window.location.assign(response.data);
         } catch (error) {
           console.error(error);
         }
@@ -165,11 +170,10 @@ function Profile() {
   
   useEffect(() => {
 
-    if (value) {
-      
+    if (value) {      
       subscribeOnce(UserService.checkPayment(value), () => {
         setIsOpenPopup(false);
-        enqueueSnackbar(`Bạn vừa nạp ${Number(amount).toLocaleString("vn")} đ`, {
+        enqueueSnackbar(`Bạn vừa nạp ${(Number(value.substring(value.indexOf("=")+1,value.indexOf("&")))/100).toLocaleString("vn")} đ`, {
           variant: TYPE_ALERT.SUCCESS,
         });
       });
@@ -327,8 +331,8 @@ function Profile() {
                         <Button onClick={handleClose}>Hủy</Button>
                         <Button onClick={() => {
                           handlePayment();
-                          if (url.length !== 0)
-                            window.location.assign(url);
+                          // if (url.length !== 0)
+                          //   window.location.assign(url);
                           //   handlePayment(amount);
                           // if(url.length !== 0)
                           //   window.location.assign(url);

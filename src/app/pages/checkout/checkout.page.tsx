@@ -45,7 +45,7 @@ const OrderItemInfo = ({ item }: { item: OrderItem }) => {
       </Grid>
       <Grid item xs={10} md={10}>
         <Typography color="textPrimary" style={{ fontWeight: "bolder" }}>
-          {item.product.title}
+        {item.product.title} (size: {item.size})
         </Typography>
         <Box style={{ display: "flex" }}>
           <Typography color="secondary" style={{ fontWeight: "bolder" }}>
