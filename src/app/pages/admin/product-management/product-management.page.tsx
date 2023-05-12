@@ -281,9 +281,10 @@ function ProductManagement() {
             <TableHead>
               <TableRow>
                 <TableCell width="7%">STT</TableCell>
+                <TableCell width="15%">Thể loại</TableCell>
                 <TableCell width="37%">Tiêu đề</TableCell>
                 <TableCell width="15%">Giá</TableCell>
-                <TableCell width="20%">Tác giả</TableCell>
+                <TableCell width="10%">Đã bán</TableCell>
                 <TableCell width="7%" align="center">
                   Xem
                 </TableCell>
@@ -300,9 +301,11 @@ function ProductManagement() {
                 products.map((item, index) => (
                   <TableRow key={item.id}>
                     <TableCell>{index + 1}</TableCell>
+                    <TableCell>{item.category.name}</TableCell>
                     <TableCell>{item.title}</TableCell>
                     <TableCell>{item.price.toLocaleString("vn")} đ</TableCell>
-                    <TableCell>{item.author}</TableCell>
+                    <TableCell>{item.quantityPurchased}</TableCell>
+
                     <TableCell align="center">
                       <IconButton onClick={() => openViewDialog(item)}>
                         <VisibilityIcon style={{ color: "black" }} />

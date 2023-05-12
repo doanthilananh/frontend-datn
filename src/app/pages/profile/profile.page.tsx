@@ -101,7 +101,12 @@ function Profile() {
         textPrimary: "Nạp tiền",
       });
       if (location.search) {
-        axios.get(`http://localhost:8081/api/users/check${location.search}`, config);
+              subscribeOnce(UserService.checkPayment(location.search), () => {
+        setIsOpenPopup(false);
+        enqueueSnackbar(`Bạn vừa nạp ${(Number(location.search.substring(location.search.indexOf("=")+1,location.search.indexOf("&")))/100).toLocaleString("vn")} đ`, {
+          variant: TYPE_ALERT.SUCCESS,
+        });
+      });    
         navigate("/profile/recharge", {replace : true});
 
       }
@@ -165,21 +170,21 @@ function Profile() {
   const onValueChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     setAmount(event.target.value);
   };
-  const value = window.location.href.substring("http://localhost:3000/profile/recharge".length);
+  // const value = window.location.href.substring("http://localhost:3000/profile/recharge".length);
   
   
-  useEffect(() => {
+  // useEffect(() => {
 
-    if (value) {      
-      subscribeOnce(UserService.checkPayment(value), () => {
-        setIsOpenPopup(false);
-        enqueueSnackbar(`Bạn vừa nạp ${(Number(value.substring(value.indexOf("=")+1,value.indexOf("&")))/100).toLocaleString("vn")} đ`, {
-          variant: TYPE_ALERT.SUCCESS,
-        });
-      });
-    }
+  //   if (value) {      
+  //     subscribeOnce(UserService.checkPayment(value), () => {
+  //       setIsOpenPopup(false);
+  //       enqueueSnackbar(`Bạn vừa nạp ${(Number(value.substring(value.indexOf("=")+1,value.indexOf("&")))/100).toLocaleString("vn")} đ`, {
+  //         variant: TYPE_ALERT.SUCCESS,
+  //       });
+  //     });
+  //   }
 
-  }, [userId]);
+  // }, [userId]);
   return (
     <>
       <Helmet>

@@ -3,9 +3,13 @@ import {
   Box,
   Button,
   Container,
+  FormControl,
   IconButton,
   InputAdornment,
+  InputLabel,
+  MenuItem,
   Paper,
+  Select,
   Table,
   TableBody,
   TableCell,
@@ -37,6 +41,7 @@ import {
   CreateProductDto,
   Product,
   UpdateProductDto,
+  UpdateSizeProductDTO,
 } from "@app/models/product.model";
 import ProductService, {
   ProductPaginationOption,
@@ -46,6 +51,8 @@ import { Category } from "@app/models/category.model";
 import CategoryService, {
   CategoryPaginationOption,
 } from "@app/services/http/category.service";
+import { ResponseResult } from "@core/services/http/http.service";
+import SizeProductForm from "@app/components/size-product-form";
 
 function SizeProductManagement() {
   const classes = useStyles();
@@ -100,18 +107,9 @@ function SizeProductManagement() {
   };
 
   const openViewDialog = (item: Product) => {
-    const itemView: UpdateProductDto = {
+    const itemView: UpdateSizeProductDTO = {
       id: item.id,
-      title: item.title,
-      longDescription: item.longDescription,
-      categoryId: item.category.id,
-      price: item.price,
-      author: item.author,
-      currentNumber: item.currentNumber,
-      numberOfPage: item.numberOfPage,
-      quantityPurchased: item.quantityPurchased,
-      createdAt: item.createdAt,
-      updatedAt: item.updatedAt,
+      sizes : item.sizeProducts
     };
     setIsView(true);
     setIsEdit(false);
@@ -120,18 +118,9 @@ function SizeProductManagement() {
   };
 
   const openInPopup = (item: Product) => {
-    const itemEdit: UpdateProductDto = {
+    const itemEdit: UpdateSizeProductDTO = {
       id: item.id,
-      title: item.title,
-      longDescription: item.longDescription,
-      categoryId: item.category.id,
-      price: item.price,
-      author: item.author,
-      currentNumber: item.currentNumber,
-      numberOfPage: item.numberOfPage,
-      quantityPurchased: item.quantityPurchased,
-      createdAt: item.createdAt,
-      updatedAt: item.updatedAt,
+      sizes : item.sizeProducts
     };
     setIsView(false);
     setIsEdit(true);
@@ -139,22 +128,16 @@ function SizeProductManagement() {
     setIsOpenPopup(true);
   };
 
-  const addOrEdit = (values: UpdateProductDto, resetForm: () => void) => {
+  const addOrEdit = (values: UpdateSizeProductDTO, resetForm: () => void) => {
     if (isEdit) {
       const editProductId = values.id;
-      const editProductBody: Partial<UpdateProductDto> = {
-        title: values.title,
-        longDescription: values.longDescription,
-        categoryId: values.categoryId,
-        price: values.price,
-        author: values.author,
-        currentNumber: values.currentNumber,
-        numberOfPage: values.numberOfPage,
+      const editProductBody: Partial<UpdateSizeProductDTO> = {
+        sizes : values.sizes
       };
       subscribeOnce(
-        ProductService.updateProduct(editProductId, editProductBody),
+        ProductService.updateSizeProduct(editProductId, editProductBody),
         () => {
-          enqueueSnackbar("Cập nhật sản phẩm thành công", {
+          enqueueSnackbar("Cập nhật sô lượng hàng thành công", {
             variant: TYPE_ALERT.SUCCESS,
           });
           resetForm();
@@ -163,24 +146,6 @@ function SizeProductManagement() {
           setForceUpdate();
         }
       );
-    } else {
-      const newProduct: CreateProductDto = {
-        title: values.title,
-        longDescription: values.longDescription,
-        price: values.price,
-        author: values.author,
-        currentNumber: values.currentNumber,
-        numberOfPage: values.numberOfPage,
-        categoryId: values.categoryId,
-      };
-      subscribeOnce(ProductService.createProduct(newProduct), () => {
-        enqueueSnackbar("Tạo sản phẩm thành công", {
-          variant: TYPE_ALERT.SUCCESS,
-        });
-        resetForm();
-        setIsOpenPopup(false);
-        setForceUpdate();
-      });
     }
   };
 
@@ -252,11 +217,11 @@ function SizeProductManagement() {
           Thêm hàng mới
         </Button> */}
         <PopupDialog
-          title="Biểu mẫu sản phẩm"
+          title="Kho hàng của sản phẩm"
           openPopup={isOpenPopup}
           setOpenPopup={setIsOpenPopup}
         >
-          <ProductForm
+          <SizeProductForm
             isEdit={isEdit}
             isView={isView}
             recordForAction={recordForAction}

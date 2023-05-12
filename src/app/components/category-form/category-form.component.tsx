@@ -135,7 +135,7 @@ function CategoryForm(props: PropTypes) {
           xs={isView ? 6 : 12}
           style={{ textAlign: isView ? "left" : "center" }}
         >
-          <FormControlLabel
+          {/* <FormControlLabel
             control={
               <Checkbox
                 checked={values.isAuthor}
@@ -147,7 +147,7 @@ function CategoryForm(props: PropTypes) {
               />
             }
             label={<span className="bs-text-black">Là tác giả</span>}
-          />
+          /> */}
           {isView && (
             <>
               <Controls.Input

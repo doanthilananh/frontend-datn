@@ -72,7 +72,7 @@ function ProductItem(props: PropTypes) {
               <div className="price">
                 <div>{item.price.toLocaleString("en")} đ</div>
                 <div className="buy">
-                  <i className="fas fa-shopping-bag buy-icon"></i>
+                  {/* <i className="fas fa-shopping-bag buy-icon"></i> */}
                   {/* <i className="fas fa-heart buy-icon"></i> */}
                 </div>
               </div>

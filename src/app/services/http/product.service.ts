@@ -8,6 +8,7 @@ import {
   CreateProductDto,
   Product,
   UpdateProductDto,
+  UpdateSizeProductDTO,
 } from "@app/models/product.model";
 import { PRODUCT_TYPE } from "@app/shared/constants/common";
 
@@ -57,6 +58,11 @@ class _ProductService {
     }).pipe(map<any, Product>((response) => response.result.data));
   }
 
+  public updateSizeProduct(productId : number, updateSizeProductDto : Partial<UpdateSizeProductDTO>){
+    return HttpService.patch(`/products/sizes/${productId}`, {
+      body: { ...updateSizeProductDto },
+    }).pipe(map<any, Product>((response) => response.result.data));
+  }
   public deleteProduct(productId: number) {
     return HttpService.delete(`/products/${productId}`).pipe(
       map<any, Product>((response) => response.result.data)

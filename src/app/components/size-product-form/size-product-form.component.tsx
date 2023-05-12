@@ -1,87 +1,71 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Grid } from "@material-ui/core";
 import clsx from "clsx";
 import dayjs from "dayjs";
 import { Form, useForm } from "@app/hooks/use-form.hook";
 import { Category } from "@app/models/category.model";
-import { Product, UpdateProductDto } from "@app/models/product.model";
+import { Product, SizeDTO, UpdateSizeProductDTO } from "@app/models/product.model";
 import { DEFAULT_DATETIME_FORMAT } from "@app/shared/constants/common";
 import { titleCase } from "@core/helpers/string.helper";
 import Controls from "../controls";
 
-const initialProductValues: UpdateProductDto = {
-  id: 0,
-  title: "",
-  longDescription: "",
-  price: 0,
-  author: "",
-  currentNumber: 0,
-  numberOfPage: 0,
-  quantityPurchased: 0,
-  categoryId: 0,
-  createdAt: new Date(),
-  updatedAt: new Date(),
-};
+// const initialProductValues: UpdateProductDto = {
+//   id: 0,
+//   title: "",
+//   longDescription: "",
+//   price: 0,
+//   author: "",
+//   currentNumber: 0,
+//   numberOfPage: 0,
+//   quantityPurchased: 0,
+//   categoryId: 0,
+//   createdAt: new Date(),
+//   updatedAt: new Date(),
+// };
+const initSizeDTO : SizeDTO = {
+  size : "",
+  quantity : 0
+}
 
+const initialSizeProductValues : UpdateSizeProductDTO = {
+  id : 0,
+  sizes : [initSizeDTO]
+}
 type PropTypes = {
   isEdit: boolean;
   isView: boolean;
   recordForAction: Product;
-  addOrEdit: (values: UpdateProductDto, resetForm: () => void) => void;
+  addOrEdit: (values: UpdateSizeProductDTO, resetForm: () => void) => void;
   categories: Category[];
 };
 
-function ProductForm(props: PropTypes) {
+function SizeProductForm(props: PropTypes) {
   const { isEdit, isView, recordForAction, addOrEdit, categories } = props;
 
   if (recordForAction.id) {
-    initialProductValues.id = recordForAction.id;
+    initialSizeProductValues.id = recordForAction.id;
   }
 
-  const categoryItems = () => {
-    return categories.map((item) => ({
-      id: item.id,
-      title: titleCase(item.name),
-    }));
-  };
 
   const validate = (fieldValues = values) => {
     const temp = { ...errors };
 
-    if ("title" in fieldValues) {
-      temp.title =
-        fieldValues.title.trim() !== "" ? "" : "Trường này là bắt buộc";
+    if ("XS" in fieldValues) {
+      temp.size = fieldValues.size > 0 ? "" : "Trường này phải lớn hơn 0";
     }
 
-    if ("longDescription" in fieldValues) {
-      temp.longDescription =
-        fieldValues.longDescription.trim() !== ""
-          ? ""
-          : "Trường này là bắt buộc";
+
+    if ("S" in fieldValues) {
+      temp.size = fieldValues.size > 0 ? "" : "Trường này phải lớn hơn 0";
+    }
+ 
+    if ("M" in fieldValues) {
+      temp.size = fieldValues.size > 0 ? "" : "Trường này phải lớn hơn 0";
     }
 
-    // if ("author" in fieldValues) {
-    //   temp.author =
-    //     fieldValues.author.trim() !== "" ? "" : "Trường này là bắt buộc";
-    // }
 
-    if ("price" in fieldValues) {
-      temp.price = fieldValues.price > 0 ? "" : "Trường này phải lớn hơn 0";
-    }
-
-    // if ("currentNumber" in fieldValues) {
-    //   temp.currentNumber =
-    //     fieldValues.currentNumber >= 0 ? "" : "Trường này phải lớn hơn 0";
-    // }
-
-    // if ("numberOfPage" in fieldValues) {
-    //   temp.numberOfPage =
-    //     fieldValues.numberOfPage > 0 ? "" : "Trường này phải lớn hơn 0";
-    // }
-
-    if ("categoryId" in fieldValues) {
-      temp.categoryId =
-        fieldValues.categoryId > 0 ? "" : "Vui lòng chọn thể loại";
+    if ("L" in fieldValues) {
+      temp.size = fieldValues.size > 0 ? "" : "Trường này phải lớn hơn 0";
     }
 
     setErrors({
@@ -92,8 +76,9 @@ function ProductForm(props: PropTypes) {
   };
 
   const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
-    useForm(initialProductValues, true, validate);
-
+    useForm(initialSizeProductValues, true, validate);
+  
+  
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isEdit) {
@@ -116,23 +101,34 @@ function ProductForm(props: PropTypes) {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [recordForAction, isView, isEdit]);
+  
+  const quantitySize = (size:string) => {
+    if(values.sizes.length > 1)
+    {
+      const sizeDTO : SizeDTO = values.sizes.find(value => value.size===size)
+      return sizeDTO.quantity;
+    }
+    return 0;
+  }
+  const [xs, setXS] = useState(quantitySize("XS"));
 
+  const handleChange = (e, value) => {
+    setXS(e.target.value);
+  }
   return (
     <Form onSubmit={handleSubmit}>
       <Grid container>
-        <Grid item xs={6}>
-          <Controls.Input
+        <Grid item xs={12} style={{display:'flex', flexDirection:'row'}}>
+          {/* <Controls.Input
             name="title"
             label="Tiêu đề"
-            value={values.title}
-            onChange={handleInputChange}
-            error={errors.title}
+            value={recordForAction.title}
             InputProps={{
-              readOnly: isView,
+              readOnly: true,
             }}
           />
-         
-          <Controls.Input
+          */}
+          {/* <Controls.Input
             name="price"
             label="Giá"
             value={values.price}
@@ -143,7 +139,7 @@ function ProductForm(props: PropTypes) {
               inputProps: { min: 0 },
               readOnly: isView,
             }}
-          />
+          /> */}
           {/* <Controls.Input
             name="author"
             label="Tác giả"
@@ -155,7 +151,7 @@ function ProductForm(props: PropTypes) {
               readOnly: isView,
             }}
           /> */}
-          {isView && (
+          {/* {isView && (
             <Controls.Select
               name="categoryId"
               label="Thể loại"
@@ -166,24 +162,62 @@ function ProductForm(props: PropTypes) {
               disabled={isView}
               className={clsx({ "bs-text-black": isView })}
             />
-          )}
-           <Controls.Input
-            name="longDescription"
-            label="Mô tả"
+          )} */}
+         <Grid style={{display:'flex', flexDirection:'row'}}>
+        {values.sizes.length !==0 && ( <Controls.Input
+            name="XS"
+            label="Size XS"
             multiline
             maxRows={8.5}
-            value={values.longDescription}
+            value={xs !== 0 ? xs : quantitySize("XS")}
+            onChange={(e)=>handleChange(e,"XS")}
+            error={errors.longDescription}
+            InputProps={{
+              readOnly: isView,
+            }}
+          />)}
+             <Controls.Input
+            name="S"
+            label="Size S"
+            multiline
+            maxRows={8.5}
+            value={quantitySize("S")}
             onChange={handleInputChange}
             error={errors.longDescription}
             InputProps={{
               readOnly: isView,
             }}
           />
+           <Controls.Input
+            name="M"
+            label="Size M"
+            multiline
+            maxRows={8.5}
+            value={quantitySize("M")}
+            onChange={handleInputChange}
+            error={errors.longDescription}
+            InputProps={{
+              readOnly: isView,
+            }}
+          />
+           <Controls.Input
+            name="L"
+            label="Size L"
+            multiline
+            maxRows={8.5}
+            value={quantitySize("L")}
+            onChange={handleInputChange}
+            error={errors.longDescription}
+            InputProps={{
+              readOnly: isView,
+            }}
+          />
+         </Grid>
         </Grid>
         <Grid item xs={6}>
           {/* <Controls.Input
             name="currentNumber"
-            label="Số lượng còn"
+            label="còn"
             value={values.currentNumber}
             onChange={handleInputChange}
             error={errors.currentNumber}
@@ -205,10 +239,10 @@ function ProductForm(props: PropTypes) {
               readOnly: isView,
             }}
           /> */}
-          {isView && (
+          {/* {isView && (
             <Controls.Input
               name="quantityPurchased"
-              label="Số lượng đã mua"
+              label="đã mua"
               value={values.quantityPurchased}
               disabled
               InputProps={{
@@ -218,8 +252,8 @@ function ProductForm(props: PropTypes) {
                 },
               }}
             />
-          )}
-          {!isView && (
+          )} */}
+          {/* {!isView && (
             <Controls.Select
               name="categoryId"
               label="Thể loại"
@@ -230,8 +264,8 @@ function ProductForm(props: PropTypes) {
               disabled={isView}
               className={clsx({ "bs-text-black": isView })}
             />
-          )}
-          {isView && (
+          )} */}
+          {/* {isView && (
             <>
               <Controls.Input
                 name="createdAt"
@@ -250,7 +284,7 @@ function ProductForm(props: PropTypes) {
                 }}
               />
             </>
-          )}
+          )} */}
         </Grid>
         {!isView && (
           <Grid item xs={12} style={{ marginTop: "1em" }}>
@@ -269,4 +303,4 @@ function ProductForm(props: PropTypes) {
   );
 }
 
-export default ProductForm;
+export default SizeProductForm;

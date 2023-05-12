@@ -12,3 +12,15 @@ export class SizeProduct extends Model {
     this.fill(data);
   }
 }
+
+export interface UpdateSizeProductDto {
+  productId: number;
+  sizes : SizeProductDTO[];
+  createdAt?: Date;
+  updatedAt?: Date;
+}
+
+export interface SizeProductDTO{
+  quantity: number;
+  size : string;
+}

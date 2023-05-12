@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import dayjs from "dayjs";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   Box,
   Grid,
@@ -55,13 +55,16 @@ function OrderDetail() {
   const openConfirmDialog = () => {
     setConfirmDialogOpen(true);
   };
+  const navigate = useNavigate();
 
   const handleCancelSaleOrder = () => {
     if (saleOrder.id) {
       subscribeOnce(SaleOrderService.cancelSaleOrder(saleOrder.id), () => {
         setForceUpdate();
       });
+      window.location.reload();
     }
+    
   };
 
   return (

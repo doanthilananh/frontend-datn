@@ -41,11 +41,11 @@
 
           li {
             a {
-              color: black;
+              color: white;
             }
 
             &:hover a {
-              color: #d51c24;
+              color: white;
             }
           }
         }
@@ -74,6 +74,7 @@
     top: 0;
     right: 0.5em;
     content: ">";
+    color: orange;
   }
 }
 

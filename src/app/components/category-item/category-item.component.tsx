@@ -20,7 +20,7 @@ function CategoryItem(props: PropTypes) {
     >
       <div className="category-item-wrapper">
         <div className="category-item">
-          <img src={imageCategory} alt="" className="category-image" />
+          <img src={"https://file.hstatic.net/200000182297/file/banner_-_her_choice_e909e3a2ca06465a8546a039defece12.jpg"} alt="" className="category-image" />
           <div className="category-right">
             <div className="category-text-wrapper">
               <span className="category-text">{item.name}</span>

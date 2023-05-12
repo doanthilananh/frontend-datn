@@ -49,3 +49,13 @@ export interface UpdateProductDto {
   createdAt?: Date;
   updatedAt?: Date;
 }
+
+export interface UpdateSizeProductDTO{
+  id : number;
+  sizes : SizeDTO[];
+}
+
+export interface SizeDTO{
+  size : string;
+  quantity: number;
+}
