@@ -324,12 +324,12 @@ function AppBar() {
                   ))}
               </ul>
             </li>
-            <Link to="/contact" style={{ color: "white", textDecoration: "none", marginRight:30}}>
+            {/* <Link to="/contact" style={{ color: "white", textDecoration: "none", marginRight:30}}>
                 {/* <i className="fa fa-bars"></i>{" "} */}
-                <Typography className={classes.title} variant="h6" noWrap>
-              LIÊN HỆ SHOP
-            </Typography>
-                        </Link>
+                {/* <Typography className={classes.title} variant="h6" noWrap> */}
+              {/* LIÊN HỆ SHOP */}
+            {/* </Typography> */}
+                        {/* </Link>*/} 
           </ul>
           
         </div>

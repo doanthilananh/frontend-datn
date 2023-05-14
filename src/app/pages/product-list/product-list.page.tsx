@@ -43,7 +43,7 @@ function ProductList() {
   useEffect(() => {
     if (query.get("category")) {
       const options: PaginationOption = {
-        perPage: 24,
+        perPage: 12,
         page: pagination.page,
       };
       const category = query.get("category") || "";

@@ -14,6 +14,7 @@ import {
   DEFAULT_DATETIME_FORMAT,
   DELIVERY_INDEX,
   DELIVERY_INDEX_MAP,
+  TYPE_ALERT,
 } from "@app/shared/constants/common";
 import { SaleOrder } from "@app/models/sale-order.model";
 import useObservable from "@core/hooks/use-observable.hook";
@@ -23,6 +24,7 @@ import { calculateTotalAmount } from "@app/shared/helpers/helpers";
 import { useStyles } from "./make-style";
 import ConfirmDialog from "@app/components/confirm-dialog";
 import useForceUpdate from "@core/hooks/use-force-update.hook";
+import { useSnackbar } from "notistack";
 
 function OrderDetail() {
   const classes = useStyles();
@@ -56,13 +58,18 @@ function OrderDetail() {
     setConfirmDialogOpen(true);
   };
   const navigate = useNavigate();
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleCancelSaleOrder = () => {
     if (saleOrder.id) {
       subscribeOnce(SaleOrderService.cancelSaleOrder(saleOrder.id), () => {
         setForceUpdate();
       });
+ 
       window.location.reload();
+      enqueueSnackbar(`Hủy đơn hàng thành công`, {
+        variant: TYPE_ALERT.SUCCESS,
+      });
     }
     
   };

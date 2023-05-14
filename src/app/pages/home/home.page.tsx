@@ -46,7 +46,7 @@ function HomePage() {
     });
 
     subscribeUntilDestroy(
-      ProductService.getListByCategory("combo", options),
+      ProductService.getListByCategory("ao-so-mi", options),
       (response) => {
         setProductCombo(response.data as Product[]);
       }
@@ -60,7 +60,7 @@ function HomePage() {
     );
 
     subscribeUntilDestroy(
-      ProductService.getListByCategory("manga-comic", options),
+      ProductService.getListByCategory("quan", options),
       (response) => {
         setProductComicManga(response.data as Product[]);
       }
@@ -147,16 +147,17 @@ function HomePage() {
         <img className={classes.bannerComboImg} src={bannerCombo} alt="" />
       </div> */}
 
-      <Box
+<Box
         marginTop={2}
         paddingX={5.5}
-        maxWidth="930px"
+        maxWidth="1300px"
         style={{ margin: "0 auto" }}
       >
         <Box marginTop={5} marginBottom={5}>
-          <Typography variant="h6" gutterBottom align="left">
-            COMBO
+        <Typography variant="h4" gutterBottom align="center" style={{marginBottom:40, fontWeight:"bold"}}>
+            ÁO SƠ MI
           </Typography>
+
 
           <div className={classes.root}>
             <Grid container spacing={1}>
@@ -171,7 +172,7 @@ function HomePage() {
 
           <Box className={classes.showMoreBox}>
             <Link
-              to="/products?category=combo"
+              to="/products?category=ao-so-mi"
               className={classes.showMoreLink}
             >
               <Button variant="contained" style={{color:'white', backgroundColor:'#000000', marginTop:20}}>Xem thêm</Button>
@@ -181,19 +182,20 @@ function HomePage() {
       </Box>
 
       {/* <div className="banner-manga">
-        <img className={classes.bannerMangaImg} src={bannerManga} alt="" />
+        <img className={classes.bannerMangaImg} src={"https://theme.hstatic.net/200000182297/1000887316/14/hb_image1.jpg?v=580"} alt="" />
       </div> */}
 
-      <Box
+<Box
         marginTop={2}
         paddingX={5.5}
-        maxWidth="930px"
+        maxWidth="1300px"
         style={{ margin: "0 auto" }}
       >
-        <Box marginTop={5}>
-          <Typography variant="h6" gutterBottom align="left">
-            MANGA - COMIC
+        <Box marginTop={5} marginBottom={5}>
+        <Typography variant="h4" gutterBottom align="center" style={{marginBottom:40, fontWeight:"bold"}}>
+            QUẦN
           </Typography>
+
 
           <div className={classes.root}>
             <Grid container spacing={1}>
@@ -208,7 +210,7 @@ function HomePage() {
 
           <Box className={classes.showMoreBox}>
             <Link
-              to="/products?category=manga-comic"
+              to="/products?category=quan"
               className={classes.showMoreLink}
             >
               <Button variant="contained" style={{color:'white', backgroundColor:'#000000', marginTop:20}}>Xem thêm</Button>
@@ -225,7 +227,7 @@ function HomePage() {
         />
       </div> */}
 
-      <Box
+      {/* <Box
         marginTop={2}
         paddingX={5.5}
         maxWidth="930px"
@@ -256,7 +258,7 @@ function HomePage() {
             </Link>
           </Box>
         </Box>
-      </Box>
+      </Box> */}
       <Footer />
     </>
   );

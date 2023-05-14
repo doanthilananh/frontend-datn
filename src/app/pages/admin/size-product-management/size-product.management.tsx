@@ -131,6 +131,8 @@ function SizeProductManagement() {
   const addOrEdit = (values: UpdateSizeProductDTO, resetForm: () => void) => {
     if (isEdit) {
       const editProductId = values.id;
+      console.log(values);
+      
       const editProductBody: Partial<UpdateSizeProductDTO> = {
         sizes : values.sizes
       };

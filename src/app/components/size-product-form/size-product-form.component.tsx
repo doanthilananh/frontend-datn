@@ -83,7 +83,26 @@ function SizeProductForm(props: PropTypes) {
     e.preventDefault();
     if (isEdit) {
       if (validate()) {
-        addOrEdit(values, resetForm);
+        addOrEdit({
+          id : values.id,
+          sizes : [{
+            size : "XS",
+            quantity : xs !== 0 ? xs : quantitySize("XS")
+          },
+          {
+            size : "S",
+            quantity :  s !== 0 ? s : quantitySize("S")
+          },
+          {
+            size : "M",
+            quantity :  m !== 0 ? m : quantitySize("M")
+          },
+          {
+            size : "L",
+            quantity :  l !== 0 ? l : quantitySize("L")
+          },
+        ]
+        }, resetForm);
       }
       return;
     }
@@ -111,10 +130,26 @@ function SizeProductForm(props: PropTypes) {
     return 0;
   }
   const [xs, setXS] = useState(quantitySize("XS"));
+  const [s, setS] = useState(quantitySize("S"));
+  const [m, setM] = useState(quantitySize("M"));
+  const [l, setL] = useState(quantitySize("L"));
 
-  const handleChange = (e, value) => {
+  const handleChangeXS = (e) => {
     setXS(e.target.value);
   }
+  
+  const handleChangeS = (e) => {
+    setS(e.target.value);
+  }
+  
+  const handleChangeM = (e) => {
+    setM(e.target.value);
+  }
+  
+  const handleChangeL = (e) => {
+    setL(e.target.value);
+  }
+  
   return (
     <Form onSubmit={handleSubmit}>
       <Grid container>
@@ -164,25 +199,25 @@ function SizeProductForm(props: PropTypes) {
             />
           )} */}
          <Grid style={{display:'flex', flexDirection:'row'}}>
-        {values.sizes.length !==0 && ( <Controls.Input
+        <Controls.Input
             name="XS"
             label="Size XS"
             multiline
             maxRows={8.5}
-            value={xs !== 0 ? xs : quantitySize("XS")}
-            onChange={(e)=>handleChange(e,"XS")}
+            value={xs!==0 ? xs : quantitySize("XS")}
+            onChange={handleChangeXS}
             error={errors.longDescription}
             InputProps={{
               readOnly: isView,
             }}
-          />)}
+          />
              <Controls.Input
             name="S"
             label="Size S"
             multiline
             maxRows={8.5}
-            value={quantitySize("S")}
-            onChange={handleInputChange}
+            value={s!==0 ? s : quantitySize("S")}
+            onChange={handleChangeS}
             error={errors.longDescription}
             InputProps={{
               readOnly: isView,
@@ -193,8 +228,8 @@ function SizeProductForm(props: PropTypes) {
             label="Size M"
             multiline
             maxRows={8.5}
-            value={quantitySize("M")}
-            onChange={handleInputChange}
+            value={m!==0 ? m : quantitySize("M")}
+            onChange={handleChangeM}
             error={errors.longDescription}
             InputProps={{
               readOnly: isView,
@@ -205,8 +240,8 @@ function SizeProductForm(props: PropTypes) {
             label="Size L"
             multiline
             maxRows={8.5}
-            value={quantitySize("L")}
-            onChange={handleInputChange}
+            value={l!==0 ? l : quantitySize("L")}
+            onChange={handleChangeL}
             error={errors.longDescription}
             InputProps={{
               readOnly: isView,

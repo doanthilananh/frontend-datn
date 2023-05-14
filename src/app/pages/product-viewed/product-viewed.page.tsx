@@ -25,7 +25,7 @@ function ProductViewed() {
   const [pagination, setPagination] = useState(() => {
     const options: ProductPaginationOption = {
       ...DEFAULT_PAGINATION_OPTION,
-      perPage: 24,
+      perPage: 12,
     };
     return options;
   });
