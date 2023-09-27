@@ -254,10 +254,10 @@ function SizeProductManagement() {
               <TableRow>
                 <TableCell width="10%">STT</TableCell>
                 <TableCell width="20%">Sản phẩm</TableCell>
-                <TableCell width="10%">XS</TableCell>
-                <TableCell width="10%">S</TableCell>
-                <TableCell width="10%">M</TableCell>
-                <TableCell width="10%">L</TableCell>
+                <TableCell width="10%">35</TableCell>
+                <TableCell width="10%">36</TableCell>
+                <TableCell width="10%">37</TableCell>
+                <TableCell width="10%">38</TableCell>
                 <TableCell width="10%" align="center">
                   Xem
                 </TableCell>
@@ -275,10 +275,10 @@ function SizeProductManagement() {
                   <TableRow key={item.id}>
                     <TableCell>{index + 1}</TableCell>
                     <TableCell>{item.title}</TableCell>
-                    <TableCell>{quantity(item, "XS")}</TableCell>
-                    <TableCell>{quantity(item, "S")}</TableCell>
-                    <TableCell>{quantity(item, "M")}</TableCell>
-                    <TableCell>{quantity(item, "L")}</TableCell>
+                    <TableCell>{quantity(item, "35")}</TableCell>
+                    <TableCell>{quantity(item, "36")}</TableCell>
+                    <TableCell>{quantity(item, "37")}</TableCell>
+                    <TableCell>{quantity(item, "38")}</TableCell>
                     <TableCell align="center">
                       <IconButton onClick={() => openViewDialog(item)}>
                         <VisibilityIcon style={{ color: "black" }} />

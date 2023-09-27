@@ -18,7 +18,7 @@ const SizeSelector = (props) => {
   };
   useEffect(()=>{
     if(props.id){
-        subscribeOnce(SizeProductService.getAllQuantityBySizeAndProductId(selectedSize || "XS", props.id), (data)=>{
+        subscribeOnce(SizeProductService.getAllQuantityBySizeAndProductId(selectedSize || "35", props.id), (data)=>{
             props.setQuantity(data);
         })
     }
@@ -26,39 +26,39 @@ const SizeSelector = (props) => {
   return (
     <div >
       <div style={{display:'flex', justifyContent:'space-between'}} className="label">
-        <label className={selectedSize === "XS" ? 'activesss sd' : ''}>
-          <input type="radio" name="size" value="XS" checked={selectedSize === 'XS'} onChange={HandleSizeChange} />
-          XS
-          {selectedSize === "XS" && (
+        <label className={selectedSize === "35" ? 'activesss sd' : ''}>
+          <input type="radio" name="size" value="35" checked={selectedSize === '35'} onChange={HandleSizeChange} />
+          35
+          {selectedSize === "35" && (
               <img
                 src="//theme.hstatic.net/200000182297/1000887316/14/select-pro1.png?v=567"
                 style={{position:'absolute', width:30, marginLeft:7}}
               />
             )}        </label>
-        <label className={selectedSize === "S" ? 'activesss' : ''}>
-          <input type="radio" name="size" value="S" checked={selectedSize === 'S'} onChange={HandleSizeChange} />
-          S
-          {selectedSize === "S" && (
+        <label className={selectedSize === "36" ? 'activesss' : ''}>
+          <input type="radio" name="size" value="36" checked={selectedSize === '36'} onChange={HandleSizeChange} />
+          36
+          {selectedSize === "36" && (
               <img
                 src="//theme.hstatic.net/200000182297/1000887316/14/select-pro1.png?v=567"
                 style={{position:'absolute', width:30, marginLeft:17}}
               />
             )}  
         </label>
-        <label className={selectedSize === "M" ? 'activesss' : ''}>
-          <input type="radio" name="size" value="M" checked={selectedSize === 'M'} onChange={HandleSizeChange} />
-          M
-          {selectedSize === "M" && (
+        <label className={selectedSize === "37" ? 'activesss' : ''}>
+          <input type="radio" name="size" value="37" checked={selectedSize === '37'} onChange={HandleSizeChange} />
+          37
+          {selectedSize === "37" && (
               <img
                 src="//theme.hstatic.net/200000182297/1000887316/14/select-pro1.png?v=567"
                 style={{position:'absolute', width:30, marginLeft:11}}
               />
             )}  
         </label>
-        <label className={selectedSize === "L" ? 'activesss' : ''}>
-          <input type="radio" name="size" value="L" checked={selectedSize === 'L'} onChange={HandleSizeChange} />
-          L
-          {selectedSize === "L" && (
+        <label className={selectedSize === "38" ? 'activesss' : ''}>
+          <input type="radio" name="size" value="38" checked={selectedSize === '38'} onChange={HandleSizeChange} />
+          38
+          {selectedSize === "38" && (
               <img
                 src="//theme.hstatic.net/200000182297/1000887316/14/select-pro1.png?v=567"
                 style={{position:'absolute', width:30, marginLeft:17.5}}

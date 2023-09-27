@@ -37,7 +37,7 @@ const Contact = () => {
   return (
     <Wrapper>
       <iframe
-        src="https://maps.google.com/maps?width=866&amp;height=607&amp;hl=en&amp;q=CANIFA 109 PHẠM NGŨ LÃO HẢI DƯƠNG&amp;t=&amp;z=19&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+        src="https://maps.google.com/maps?width=866&amp;height=607&amp;hl=en&amp;q=CANIFA 38 Nguyên Xá Minh Khai Hà Nội &amp;t=&amp;z=19&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
         allowFullScreen
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"></iframe>

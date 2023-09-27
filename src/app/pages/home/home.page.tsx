@@ -155,7 +155,7 @@ function HomePage() {
       >
         <Box marginTop={5} marginBottom={5}>
         <Typography variant="h4" gutterBottom align="center" style={{marginBottom:40, fontWeight:"bold"}}>
-            ÁO SƠ MI
+            GIÀY THỂ THAO
           </Typography>
 
 
@@ -172,7 +172,7 @@ function HomePage() {
 
           <Box className={classes.showMoreBox}>
             <Link
-              to="/products?category=ao-so-mi"
+              to="/products?category=giay-the-thao"
               className={classes.showMoreLink}
             >
               <Button variant="contained" style={{color:'white', backgroundColor:'#000000', marginTop:20}}>Xem thêm</Button>
@@ -193,7 +193,7 @@ function HomePage() {
       >
         <Box marginTop={5} marginBottom={5}>
         <Typography variant="h4" gutterBottom align="center" style={{marginBottom:40, fontWeight:"bold"}}>
-            QUẦN
+            GIÀY CAO GÓT NỮ
           </Typography>
 
 
@@ -210,7 +210,7 @@ function HomePage() {
 
           <Box className={classes.showMoreBox}>
             <Link
-              to="/products?category=quan"
+              to="/products?category=giay-cao-got-nu"
               className={classes.showMoreLink}
             >
               <Button variant="contained" style={{color:'white', backgroundColor:'#000000', marginTop:20}}>Xem thêm</Button>

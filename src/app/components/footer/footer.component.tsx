@@ -49,22 +49,22 @@ function Footer() {
             <h3 className='text-uppercase fw-bold mb-4'>Sản phẩm</h3>
             <p>
               <a href='#!' style={{textDecoration:'none', color:'white'}}>
-                Giày
+                Giày thể thao
               </a>
             </p>
             <p>
               <a href='#!' style={{textDecoration:'none', color:'white'}}>
-                Áo khoác
+                Sandal nữ
               </a>
             </p>
             <p>
               <a href='#!' style={{textDecoration:'none', color:'white'}}>
-                Set bộ
+                Giày cao gót
               </a>
             </p>
             <p>
               <a href='#!' style={{textDecoration:'none', color:'white'}}>
-                Thắt lưng
+                Boot
               </a>
             </p>
           </MDBCol>
@@ -73,13 +73,13 @@ function Footer() {
             <h3 className='text-uppercase fw-bold mb-4'>Liên hệ</h3>
             <p>
               <MDBIcon icon="home" className="me-2" />
-              {` `}109 Phạm Ngũ Lão, Hải Dương</p>
+              {` `}38 Nguyên Xá Minh Khai Hà Nội</p>
             <p>
               <MDBIcon icon="envelope" className="me-3" />
-              {` `}shophaiduong@gmail.com
+              {` `}shopminhthu@gmail.com
             </p>
             <p>
-              <MDBIcon icon="phone" className="me-3" /> 0366754936
+              <MDBIcon icon="phone" className="me-3" /> 0389863041
             </p>
             <p>
               <MDBIcon icon="print" className="me-3" /> 0969441658

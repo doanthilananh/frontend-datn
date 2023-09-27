@@ -50,21 +50,21 @@ function SizeProductForm(props: PropTypes) {
   const validate = (fieldValues = values) => {
     const temp = { ...errors };
 
-    if ("XS" in fieldValues) {
+    if ("35" in fieldValues) {
       temp.size = fieldValues.size > 0 ? "" : "Trường này phải lớn hơn 0";
     }
 
 
-    if ("S" in fieldValues) {
+    if ("36" in fieldValues) {
       temp.size = fieldValues.size > 0 ? "" : "Trường này phải lớn hơn 0";
     }
  
-    if ("M" in fieldValues) {
+    if ("37" in fieldValues) {
       temp.size = fieldValues.size > 0 ? "" : "Trường này phải lớn hơn 0";
     }
 
 
-    if ("L" in fieldValues) {
+    if ("38" in fieldValues) {
       temp.size = fieldValues.size > 0 ? "" : "Trường này phải lớn hơn 0";
     }
 
@@ -86,20 +86,20 @@ function SizeProductForm(props: PropTypes) {
         addOrEdit({
           id : values.id,
           sizes : [{
-            size : "XS",
-            quantity : xs !== 0 ? xs : quantitySize("XS")
+            size : "35",
+            quantity : xs !== 0 ? xs : quantitySize("35")
           },
           {
-            size : "S",
-            quantity :  s !== 0 ? s : quantitySize("S")
+            size : "36",
+            quantity :  s !== 0 ? s : quantitySize("36")
           },
           {
-            size : "M",
-            quantity :  m !== 0 ? m : quantitySize("M")
+            size : "37",
+            quantity :  m !== 0 ? m : quantitySize("37")
           },
           {
-            size : "L",
-            quantity :  l !== 0 ? l : quantitySize("L")
+            size : "38",
+            quantity :  l !== 0 ? l : quantitySize("38")
           },
         ]
         }, resetForm);
@@ -129,10 +129,10 @@ function SizeProductForm(props: PropTypes) {
     }
     return 0;
   }
-  const [xs, setXS] = useState(quantitySize("XS"));
-  const [s, setS] = useState(quantitySize("S"));
-  const [m, setM] = useState(quantitySize("M"));
-  const [l, setL] = useState(quantitySize("L"));
+  const [xs, setXS] = useState(quantitySize("35"));
+  const [s, setS] = useState(quantitySize("36"));
+  const [m, setM] = useState(quantitySize("37"));
+  const [l, setL] = useState(quantitySize("38"));
 
   const handleChangeXS = (e) => {
     setXS(e.target.value);
@@ -200,11 +200,11 @@ function SizeProductForm(props: PropTypes) {
           )} */}
          <Grid style={{display:'flex', flexDirection:'row'}}>
         <Controls.Input
-            name="XS"
-            label="Size XS"
+            name="35"
+            label="Size 35"
             multiline
             maxRows={8.5}
-            value={xs!==0 ? xs : quantitySize("XS")}
+            value={xs!==0 ? xs : quantitySize("35")}
             onChange={handleChangeXS}
             error={errors.longDescription}
             InputProps={{
@@ -212,11 +212,11 @@ function SizeProductForm(props: PropTypes) {
             }}
           />
              <Controls.Input
-            name="S"
-            label="Size S"
+            name="36"
+            label="Size 36"
             multiline
             maxRows={8.5}
-            value={s!==0 ? s : quantitySize("S")}
+            value={s!==0 ? s : quantitySize("36")}
             onChange={handleChangeS}
             error={errors.longDescription}
             InputProps={{
@@ -224,11 +224,11 @@ function SizeProductForm(props: PropTypes) {
             }}
           />
            <Controls.Input
-            name="M"
-            label="Size M"
+            name="37"
+            label="Size 37"
             multiline
             maxRows={8.5}
-            value={m!==0 ? m : quantitySize("M")}
+            value={m!==0 ? m : quantitySize("37")}
             onChange={handleChangeM}
             error={errors.longDescription}
             InputProps={{
@@ -236,11 +236,11 @@ function SizeProductForm(props: PropTypes) {
             }}
           />
            <Controls.Input
-            name="L"
-            label="Size L"
+            name="38"
+            label="Size 38"
             multiline
             maxRows={8.5}
-            value={l!==0 ? l : quantitySize("L")}
+            value={l!==0 ? l : quantitySize("38")}
             onChange={handleChangeL}
             error={errors.longDescription}
             InputProps={{

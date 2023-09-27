@@ -283,7 +283,7 @@ function AppBar() {
           {/* </SwipeableDrawer> */}
           <Link to="/" style={{ color: "white", textDecoration: "none"}}>
             <Typography className={classes.title} variant="h6" noWrap>
-              CLOTHES STORE
+              MINHTHU STORE
             </Typography>
           
           </Link>
